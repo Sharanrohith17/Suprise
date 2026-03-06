@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For My Bestie 💖</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            color: white;
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .dark-mode {
+            background: #111;
+            color: #ff9ecf;
+        }
+
+        h1 {
+            margin-top: 80px;
+            font-size: 40px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn {
+            background: white;
+            color: #ee9ca7;
+        }
+
+        .btn:hover {
+            background: #ff4081;
+            color: white;
+        }
+
+        #secretContent {
+            display: none;
+            margin-top: 30px;
+            font-size: 22px;
+        }
+
+        #countdownSection {
+            display: none;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: fixed;
+            bottom: -10px;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            color: pink;
+        }
+
+        @keyframes float {
+            0% {transform: translateY(0); opacity: 1;}
+            100% {transform: translateY(-800px); opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hey My Forever BestFriend💕</h1>
+    <p>You are my favorite human in this world ✨</p>
+
+    <!-- Dark Mode -->
+    <button class="btn" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
+    <!-- Password Section -->
+    <h2>Enter Secret Password 🔒</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <button class="btn" onclick="checkPassword()">Unlock</button>
+
+    <div id="secretContent">
+        💖 Surprise! You are irreplaceable in my life 😍
+    </div>
+
+    <!-- Countdown -->
+    <div id="countdownSection">
+        <h2>Birthday Countdown 🎂</h2>
+        <p id="countdown"></p>
+    </div>
+
+    <!-- Background Music -->
+    <audio autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+<script>
+    /* Dark Mode */
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+
+    /* Password Check */
+    function checkPassword() {
+        let pass = document.getElementById("password").value;
+        if(pass === "Monika21") {
+            document.getElementById("secretContent").style.display = "block";
+            document.getElementById("countdownSection").style.display = "block";
+        } else {
+            alert("Wrong Password 😜");
+        }
+    }
+
+    /* Countdown Timer */
+    let birthday = new Date("September 21, 2026 00:00:00").getTime();
+
+    let x = setInterval(function() {
+        let now = new Date().getTime();
+        let distance = birthday - now;
+
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    }, 1000);
+
+    /* Floating Hearts */
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
