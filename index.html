@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>For My Bestie 💖</title>
+    <title>For My Bestfriend💖</title>
     <meta charset="UTF-8">
     <style>
         body {
@@ -92,14 +92,25 @@
     </div>
 
     <!-- Background Music -->
-    <audio autoplay loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <button class="btn" onclick="toggleMusic()">🎵 Play Music</button>
+    <audio id="bgMusic" loop>
+        <source src="https://masstamilan.download/t/2025/Aaromaley/320/Eppadi%20Vandhaayo.mp3?h=1772992940-PXT24pQ6bW3Os%2FqrtWXsI84M4DDx3TabuxEUw8eUJWQ%3D" type="audio/mpeg">
     </audio>
 
 <script>
     /* Dark Mode */
     function toggleDarkMode() {
         document.body.classList.toggle("dark-mode");
+    }
+
+    /* Music Toggle */
+    function toggleMusic() {
+        let audio = document.getElementById("bgMusic");
+        if(audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
     }
 
     /* Password Check */
